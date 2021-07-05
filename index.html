@@ -46,10 +46,20 @@
             <div id="navbar">
 
             </div>
+
+            <div id="footer">
+
+            </div>
           <div id="poke-container">
 
           </div>
+
+
+          <button id="btn">CLick </button>
+          <button id="btn2">CLick </button>
+          <button id="btn3">Toggle</button>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -79,9 +89,36 @@
                 xhr.send(null);
             }
 
-            let name = document.getElementById('navbar').append('./nav.html');
-            name
 
+            function myloading() {
+              document.getElementById('navbar').innerHTML=Date();
+              document.getElementById('navbar').load('./nav.html');
+            }
+
+            window.onload = myloading;    
+            
+            $(function(){
+              $("#footer").load("footer.html");
+              $("#navbar").load("nav.html");
+            });
+
+            //.$('h2').hide();
+            // $('h2').css("color", "green")
+
+            $('#btn').click(function() {
+            });
+            
+            $('#btn2').on('click', function() {
+              $('#navbar').show();
+            })
+
+            $('#btn').on('click', function() {
+              $('#navbar').hide();
+            })
+            
+            $('#btn3').dblclick(function() {
+              $('#navbar').toggle();
+            })
             function pop() {
                 var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function() {
@@ -112,6 +149,8 @@
                 pokeContainer.append(pokeName, pokeNumber, pokeTypes);
 
             }
+
+
 
             function createTypes(types, ul){
                  types.forEach(function(type){
